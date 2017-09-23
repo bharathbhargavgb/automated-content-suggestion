@@ -1,0 +1,10 @@
+TOPIA TERM EXTRACT
+------------------
+Download topia.termextract from https://pypi.python.org/pypi/topia.termextract/
+Unzip the file
+run the command "sudo python setup.py install"
+
+GOOGLE CUSTOM SEARCH ENGINE API
+-------------------------------
+https://stackoverflow.com/questions/37083058/programmatically-searching-google-in-python-using-custom-search
+API KEY can be obtained from - http://code.google.com/apis/console
