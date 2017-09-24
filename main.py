@@ -1,4 +1,5 @@
 from extract_keyword import extractKeywords
+from extract_images import extractImages
 from fetchURL import *
 from summarizer import summarize
 import sys
@@ -21,6 +22,9 @@ keyPhrases = extractKeywords(text)
 print "Keyword count: ", len(keyPhrases)
 for key in keyPhrases:
     print key
+
+#Create image dump of the keywords
+extractImages(keyPhrases)
 
 print '\n'
 

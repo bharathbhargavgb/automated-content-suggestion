@@ -25,7 +25,7 @@ def summarize(url):
     summary = []
     for sentence in summarizer(parser.document, SENTENCES_COUNT):
         summary.append(sentence)
-        print(sentence)
+        #print(sentence)
 
     return summary
 
