@@ -8,3 +8,11 @@ GOOGLE CUSTOM SEARCH ENGINE API
 -------------------------------
 https://stackoverflow.com/questions/37083058/programmatically-searching-google-in-python-using-custom-search
 API KEY can be obtained from - http://code.google.com/apis/console
+
+GOOGLE WEBPAGE CRAWLER
+----------------------
+https://github.com/abenassi/Google-Search-API
+
+SUMMARIZER
+----------
+https://github.com/miso-belica/sumy
