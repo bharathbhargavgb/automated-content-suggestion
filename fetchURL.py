@@ -1,25 +1,25 @@
 #THE BELOW CODE WORKS FINE BUT THE API ALLOWS ONLY 100  REQUESTS PER DAY
 
-#from googleapiclient.discovery import build
-#import pprint
+from googleapiclient.discovery import build
+import pprint
 
-#my_api_key = "AIzaSyAqqRFrZLDceW7othVvstkQ5cxaTmV_rXE"
-#my_cse_id = "005831625243409643462:vawfilusxna"
+my_api_key = "AIzaSyAqqRFrZLDceW7othVvstkQ5cxaTmV_rXE"
+my_cse_id = "005831625243409643462:vawfilusxna"
 
-#results = []
+results = []
 
-#def google_search(search_term, api_key, cse_id, **kwargs):
-#    service = build("customsearch", "v1", developerKey=api_key)
-#    res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
-#    return res['items']
-#
-#def findURLfromKeyword(keyword):
-#    results = google_search(keyword, my_api_key, my_cse_id, num=10)
-#    URLs = []
-#    for result in results:
-#        if result['link'] not in URLs:
-#            URLs.append(result['link'])
-#    return URLs#
+def google_search(search_term, api_key, cse_id, **kwargs):
+    service = build("customsearch", "v1", developerKey=api_key)
+    res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
+    return res['items']
+
+def findURLfromKeyword_api(keyword):
+    results = google_search(keyword, my_api_key, my_cse_id, num=10)
+    URLs = []
+    for result in results:
+        if result['link'] not in URLs:
+            URLs.append(result['link'])
+    return URLs#
 
 from bs4 import BeautifulSoup
 import requests
@@ -40,7 +40,18 @@ def findURLfromKeyword(keyword):
     soup = BeautifulSoup(data, "lxml")
     for field in soup.find_all("cite"):
         if 'en.wikipedia.org' in field.text and "..." not in field.text:
-            url.append(field.text)            
+            url.append(field.text)
     return url
+
+def findProductsfromKeyword(keyword):
+    url = []
+    r  = requests.get("https://www.google.co.in/search?q=" + keyword +" amazon.com")
+    data = r.text
+    soup = BeautifulSoup(data, "lxml")
+    for field in soup.find_all("cite"):
+        if 'https://www.amazon.com' in field.text and "..." not in field.text:
+            url.append(field.text)
+    return url
+
 
 findURLfromKeyword("hello")
