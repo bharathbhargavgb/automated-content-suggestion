@@ -39,3 +39,13 @@ for url in URLs:
     for content in summarize(url):
         print "--> ", content
     print '\n'
+
+# Find related products on amazon.com based on the extracted keywords
+print "FINDING RELATED PRODUCTS ON AMAZON"
+products = []
+for key in keyPhrases:
+    productList = findProductsfromKeyword(key)
+    for prod in productList:
+        if prod not in products:
+            products.append(prod)
+            print prod
